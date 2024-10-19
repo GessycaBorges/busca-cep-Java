@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +12,9 @@ public class Main {
         try {
             Adress newAdress = searchCep.searchAdress(cep);
             System.out.println(newAdress);
-        } catch (RuntimeException e) {
+            FileGenerator generator = new FileGenerator();
+            generator.saveFile(newAdress);
+        } catch (RuntimeException | IOException e) {
             System.out.println(e.getMessage());
         }
 
